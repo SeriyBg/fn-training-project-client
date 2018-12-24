@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Host Data</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Host Data</h1>
+<div>
+    <table border="1">
+        <tr>
+            <th>Request Id</th>
+            <th>Host IP Address</th>
+            <th>Login</th>
+            <th>Password</th>
+        </tr>
+        <tr>
+            <td th:utext="${ipHost.requestId}">...</td>
+            <td th:utext="${ipHost.ipAddress}">...</td>
+            <td th:utext="${ipHost.user}">...</td>
+            <td th:utext="${ipHost.password}">...</td>
+        </tr>
+    </table>
+</div>
+<h1>Interfaces</h1>
+<div>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>MAC Address</th>
+            <th>IP Address</th>
+            <th>Netmask</th>
+            <th>MTU</th>
+        </tr>
+        <tr>
+        <tr th:each ="intf : ${ipHost.ipInterfaces}">
+            <td th:utext="${intf.name}">...</td>
+            <td th:utext="${intf.macAddress}">...</td>
+            <td th:utext="(${intf.ipAddress} == null) ? '' : ${intf.ipAddress.addr}">...</td>
+            <td th:utext="(${intf.ipAddress} == null) ? '' : ${intf.ipAddress.netmask}">...</td>
+            <td th:utext="${intf.mtu}">...</td>
+        </tr>
+    </table>
+</div>
+<h1>Routes</h1>
+<div>
+    <table border="1">
+        <tr>
+            <th>Destination</th>
+            <th>Gateway</th>
+            <th>Genmask</th>
+            <th>Flags</th>
+            <th>Metric</th>
+            <th>Refs</th>
+            <th>Interface</th>
+        </tr>
+        <tr>
+        <tr th:each ="route : ${ipHost.ipRoutes}">
+            <td th:utext="${route.destination}">...</td>
+            <td th:utext="${route.gateway}">...</td>
+            <td th:utext="${route.genmask}">...</td>
+            <td th:utext="${route.flags}">...</td>
+            <td th:utext="${route.metric}">...</td>
+            <td th:utext="${route.refs}">...</td>
+            <td th:utext="${route.iface.name}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

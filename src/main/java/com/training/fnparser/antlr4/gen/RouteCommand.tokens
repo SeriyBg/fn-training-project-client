@@ -1,0 +1,17 @@
+T__0=1
+T__1=2
+T__2=3
+T__3=4
+T__4=5
+IP=6
+OCTET_IP=7
+MASK=8
+GW=9
+WS=10
+'route'=1
+'add'=2
+'del'=3
+'-net'=4
+'-host'=5
+'netmask'=8
+'gw'=9

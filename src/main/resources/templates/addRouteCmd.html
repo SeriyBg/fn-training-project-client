@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Route Command Parameters</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Enter command:</h1>
+
+<form th:action="@{/addRouteCmd}"
+      th:object="${routeCmdForm}" method="POST">
+    <span>Host IP Address:</span>
+    <input type="text" th:field="*{addr}" />
+    <br/>
+    <span>Login:</span>
+    <input type="text" th:field="*{user}" />
+    <br/>
+    <span>Password:</span>
+    <input type="text" th:field="*{password}" />
+    <br/>
+    <span>Command:</span>
+    <input type="text" th:field="*{command}" />
+    <br/>
+    <span></span>
+    <input type="submit" value="Send Request" />
+</form>
+
+<br/>
+
+<div th:if="${errorMessage}" th:utext="${errorMessage}"
+     style="color:red;font-style:italic;">
+    ...
+</div>
+
+</body>
+</html>

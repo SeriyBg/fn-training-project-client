@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Host Parameters</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Host Parameters</h1>
+<a href="addHost">Host Credentials</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id </th>
+            <th>Status</th>
+            <th>IP Address</th>
+            <th>Login</th>
+            <th>Password</th>
+        </tr>
+        <tr th:each ="host : ${hosts}">
+            <td><a th:text="${host.id}"  th:href="@{/hostData (hostId=${host.id})}">...</a></td>
+            <td th:utext="${host.status}">...</td>
+            <td th:utext="${host.addr}">...</td>
+            <td th:utext="${host.user}">...</td>
+            <td th:utext="${host.password}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
