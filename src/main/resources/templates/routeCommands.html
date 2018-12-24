@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Added Routes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Added Routes</h1>
+<a href="addRouteCmd">Route command</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Command</th>
+        </tr>
+        <tr th:each ="route : ${routes}">
+            <td th:utext="${route.time}">...</td>
+            <td th:utext="${route.status}">...</td>
+            <td th:utext="${route.command}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

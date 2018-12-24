@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Host Credentials</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Enter credentials:</h1>
+
+<form th:action="@{/addHost}"
+      th:object="${hostForm}" method="POST">
+    <span>Host IP Address:</span>
+    <input type="text" th:field="*{addr}" />
+    <br/>
+    <span>Login:</span>
+    <input type="text" th:field="*{user}" />
+    <br/>
+    <span>Password:</span>
+    <input type="text" th:field="*{password}" />
+    <br/>
+    <span></span>
+    <input type="submit" value="Send Request" />
+</form>
+
+<br/>
+
+<div th:if="${errorMessage}" th:utext="${errorMessage}"
+     style="color:red;font-style:italic;">
+    ...
+</div>
+
+</body>
+</html>
