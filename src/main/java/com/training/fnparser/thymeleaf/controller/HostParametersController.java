@@ -5,10 +5,11 @@ import java.util.List;
 
 import com.training.fnparser.model.HostRequest;
 import com.training.fnparser.model.HostResponse;
-import com.training.fnparser.model.IpHost;
+import com.training.fnparser.model.Host;
 import com.training.fnparser.model.RouteCmdResponse;
 import com.training.fnparser.service.HostService;
 import com.training.fnparser.thymeleaf.form.HostForm;
+import com.training.proto.gen.HostProto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class HostParametersController {
     @Autowired
     private HostService hostService;
     private static List<RouteCmdResponse.Host> hosts = new ArrayList<RouteCmdResponse.Host>();
-    private static IpHost ipHost;
+    private static Host ipHost;
     private String errorMessage = "POST 'http:localhost:8086/host' failed";
 
     @RequestMapping(value = { "/hostParameters" }, method = RequestMethod.GET)
@@ -61,7 +62,9 @@ public class HostParametersController {
 
     @RequestMapping(value = "/hostData")
     public String showHostData(Model model, @RequestParam("hostId") long hostId) {
-        ipHost = hostService.getHostById(hostId);
+        HostProto.Host hostProto = hostService.getHostById(hostId);
+
+        ipHost = hostService.protoDeserialize(hostProto);
 
         model.addAttribute("ipHost", ipHost);
 

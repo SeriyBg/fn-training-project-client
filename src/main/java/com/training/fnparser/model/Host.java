@@ -9,7 +9,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Data
 @ToString
-public class IpHost {
+public class Host {
     private Long id;
     private Long requestId;
     private String ipAddress;
